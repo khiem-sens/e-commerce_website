@@ -19,3 +19,16 @@ export interface ProductType{
     images?: string[] | any,
     categories: string[],
 }
+
+export interface LabelCardType {
+    id: string,
+    title: string,
+    imgSrc: string,
+    url: string
+}
+
+export interface CategoriesBannerDataType extends LabelCardType{
+    titles?: string[],
+    images?: string[],
+    links?: string[]
+}

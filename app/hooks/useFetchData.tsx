@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { getPageData, getProductsByCategory } from '../action'
-import { BannerDataType, ProductType } from '@/lib/interface'
+import { BannerDataType, CategoriesBannerDataType, ProductType } from '@/lib/interface'
 
-const useFetchData = ({url = "", categoryUrl = "", fetchBanner = false}) => {
+const useFetchData = ({url = "", categoryUrl = "", fetchBanner = false, fetchCategories = false}) => {
     const [products, setProducts] = useState<ProductType[]>([])
     const [banner, setBanner] = useState<BannerDataType>({title: "", image: ""})
+    const [categories, setCategories] = useState<CategoriesBannerDataType[]>([])
     const [isLoading, setIsLoading] = useState(true)
     const getData = useCallback(async () => {
         setIsLoading(true)
@@ -17,6 +18,9 @@ const useFetchData = ({url = "", categoryUrl = "", fetchBanner = false}) => {
             if(fetchBanner) {
                 setBanner(data.dataBanner)
             }
+            if(fetchCategories){
+                setCategories(data.categoriesObject)
+            }
             
         } catch (error) {
             console.log('Error: ', error)
@@ -28,7 +32,7 @@ const useFetchData = ({url = "", categoryUrl = "", fetchBanner = false}) => {
     useEffect(()=>{
         getData();
     },[getData])
-  return {isLoading, banner, products}
+  return {isLoading, banner, products, categories}
 }
 
 export default useFetchData

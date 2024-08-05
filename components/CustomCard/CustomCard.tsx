@@ -1,7 +1,8 @@
-import { ProductType } from "@/lib/interface";
+import { LabelCardType, ProductType } from "@/lib/interface";
 import Link from "next/link";
 import React from "react";
 import AddToCartBtn from "../Button/AddToCartBtn";
+import { Button } from "../ui/button";
 
 interface ProductProps {
   product: ProductType;
@@ -28,3 +29,27 @@ export const ProductCard: React.FC<ProductProps> = ({ product, custom }) => {
     </div>
   );
 };
+
+interface LabelCardProps {
+  category: LabelCardType,
+  custom?: string,
+  customImage?: string,
+  customText?: string,
+  customBtn?: string,
+  btnLabel?: string
+}
+
+export const LabelCard: React.FC<LabelCardProps> = ({ category, customImage, customText, customBtn, custom, btnLabel }) => {
+  return (
+      <div key={category.id} className="relative">
+          <Link href={category.url}>
+              <img src={category.imgSrc} alt="Category item" className={`rounded-xl md:w-full object-fit ${customImage}`} />
+              <div className={`font-DMSans flex flex-col md:items-start items-center absolute bottom-12 left-[50%] md:left-12 md:translate-x-0 translate-x-[-50%] text-white ${custom}`}>
+                  <p className={`md:text-[3rem] font-semibold ${customText}`}>{category.title}</p>
+                  <Button variant={'secondary'} className={`w-24 md:w-36 ${customBtn}`}>{btnLabel} </Button>
+              </div>
+          </Link>
+      </div>
+  )
+
+}
