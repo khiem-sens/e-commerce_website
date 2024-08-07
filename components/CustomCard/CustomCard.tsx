@@ -25,7 +25,7 @@ export const ProductCard: React.FC<ProductProps> = ({ product, custom }) => {
         </p>
         <p className="text-[1.25rem]">${product?.price}</p>
       </Link>
-      <AddToCartBtn />
+      <AddToCartBtn product={product}/>
     </div>
   );
 };

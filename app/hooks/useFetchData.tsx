@@ -1,3 +1,4 @@
+'use client'
 import React, { useCallback, useEffect, useState } from 'react'
 import { getPageData, getProductsByCategory } from '../action'
 import { BannerDataType, CategoriesBannerDataType, ProductType } from '@/lib/interface'

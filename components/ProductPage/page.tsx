@@ -23,7 +23,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, product }) => {
                 <p className='text-[1.5rem]'>${product.price}</p>
                 <p className='font-extralight my-4 text-[1.5rem]'>{product.description}</p>
                 <p className='text-[1.25rem]'>Quantity: {product.quantity}</p>
-                <AddToCartBtn />
+                <AddToCartBtn product={product}/>
             </div>
         </div>
     )

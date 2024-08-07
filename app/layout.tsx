@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/LandingPage/NavBar";
 import Footer from "@/components/LandingPage/Footer";
+import CardProviders from "@/components/ShoppingCart/CardProviders";
+import { CartModal } from "@/components/ShoppingCart/Cart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-Outfit my-4 mx-12">
+        <CardProviders>
         <NavBar />
+        <CartModal/>
         {children}
         <Footer/>
+        </CardProviders>
       </body>
     </html>
   );
