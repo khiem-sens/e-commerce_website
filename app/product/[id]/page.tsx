@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 const page = ({ params }: { params: { id: string } }) => {
   const [product, setProduct] = useState<ProductType>();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const getProduct = async (id: string) => {
       setLoading(true);
@@ -16,13 +17,14 @@ const page = ({ params }: { params: { id: string } }) => {
       setLoading(false);
     };
     getProduct(params.id);
-  }, []);
+  }, [params.id]);
+
   return (
     <>
-      {loading && !product ? (
+      {loading ? (
         <Loading />
       ) : (
-        <ProductPage product={product} productId={params.id} />
+        product && <ProductPage product={product} productId={params.id} />
       )}
     </>
   );

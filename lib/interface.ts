@@ -16,8 +16,8 @@ export interface ProductType{
     price: string,
     quantity: number,
     description?: string,
-    images?: string[] | any,
-    categories: string[],
+    images?: string[] | any, 
+    categories: string[]
 }
 
 export interface LabelCardType {
